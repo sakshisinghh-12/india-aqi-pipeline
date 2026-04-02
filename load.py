@@ -14,7 +14,26 @@ def load_to_bigquery(df):
 
     print("Connecting to BigQuery...")
     client = bigquery.Client(project=PROJECT_ID)
+    
+    # Duplicate guard 
+    # Check if we already have data for this exact hour and date
+    # If yes, skip the load entirely
+    current_date = df["date"].iloc[0]
+    current_hour = int(df["hour_of_day"].iloc[0])
 
+    try:
+        result = client.query(check_query).result()
+        for row in result:
+            existing = row.existing_rows
+
+        if existing > 0:
+            print(f"⚠️  Skipping load — data for {current_date} hour {current_hour} already exists ({existing} rows)")
+            print(f"   This prevents duplicates if pipeline runs twice in the same hour")
+            return
+    except Exception:
+        pass
+        
+    # Proceed with load
     job_config = bigquery.LoadJobConfig(
         write_disposition = bigquery.WriteDisposition.WRITE_APPEND,
         schema = [
