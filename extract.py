@@ -12,6 +12,7 @@ CITIES = [
     "kolkata", "jaipur", "bhopal", "chandigarh"
 ]
 
+# 6 cities removed because they failed API calls during testing: Surat, Vadodara, Rajkot, Visakhapatnam, Bhubaneswar, Indore 
 # Pune excluded — WAQI API returns frozen/cached data
 
 def get_region(city):
