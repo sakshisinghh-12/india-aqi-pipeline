@@ -7,15 +7,17 @@ API_TOKEN = "d1f24bb21886d00917ec4e9461cfd0c1a72c8976"
 CITIES = [
     "delhi", "lucknow", "kanpur", "agra", "varanasi",
     "patna", "meerut", "ghaziabad", "noida", "faridabad",
-    "mumbai", "pune", "ahmedabad", "nagpur", "nashik",
+    "mumbai", "ahmedabad", "nagpur", "nashik",
     "bangalore", "chennai", "hyderabad", "kochi", "coimbatore",
     "kolkata", "jaipur", "bhopal", "chandigarh"
 ]
 
+# Pune excluded — WAQI API returns frozen/cached data
+
 def get_region(city):
     north   = ["delhi", "lucknow", "kanpur", "agra", "varanasi",
                "patna", "meerut", "ghaziabad", "noida", "faridabad"]
-    west    = ["mumbai", "pune", "ahmedabad", "nagpur", "nashik"]
+    west    = ["mumbai", "ahmedabad", "nagpur", "nashik"]
     south   = ["bangalore", "chennai", "hyderabad", "kochi", "coimbatore"]
     east    = ["kolkata"]
     central = ["jaipur", "bhopal", "chandigarh"]
