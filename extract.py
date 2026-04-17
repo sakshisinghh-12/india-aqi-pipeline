@@ -16,11 +16,10 @@ CITIES = [
 # Pune excluded — WAQI API returns frozen/cached data
 
 def get_region(city):
-    north   = ["delhi", "lucknow", "kanpur", "agra", "varanasi",
-               "patna", "meerut", "ghaziabad", "noida", "faridabad"]
+    north   = ["delhi", "lucknow", "kanpur", "agra", "varanasi", "meerut", "ghaziabad", "noida", "faridabad"]
     west    = ["mumbai", "ahmedabad", "nagpur", "nashik"]
     south   = ["bangalore", "chennai", "hyderabad", "kochi", "coimbatore"]
-    east    = ["kolkata"]
+    east    = ["kolkata", "patna"]
     central = ["jaipur", "bhopal", "chandigarh"]
 
     if city in north:   return "North"
